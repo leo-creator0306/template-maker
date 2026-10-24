@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>テンプレメイカー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h2 style="text-align:center;"><span id="title-mode">テンプレメイカー</span></h2>
+<div class="tab-bar">
+<button type="button" id="btn-mode-fudo" class="tab active" onclick="switchMode('fudo')">不動車</button>
+<button type="button" id="btn-mode-jitsudo" class="tab inactive" onclick="switchMode('jitsudo')">実動車</button>
+</div>
+<div class="container">
+<div class="box">
+<div class="grid-2col">
+<div class="form-group"><label>車種名</label><input type="text" id="p1" placeholder="例：ホンダ ライブディオ ZX"></div>
+<div class="form-group"><label>排気量</label><input type="text" id="p2" placeholder="例：50cc"></div>
+</div>
+<div class="grid-2col">
+<div class="form-group"><label>車台番号</label><input type="text" id="p3" placeholder="例：AF35-1234***"></div>
+<div class="form-group"><label>メーター走行距離</label><input type="text" id="p4" placeholder="例：4,321km（メーター読み）"></div>
+</div>
+<div class="grid-2col">
+<div class="form-group"><label>鍵</label><input type="text" id="p5" placeholder="例：純正キー1本"></div>
+<div class="form-group"><label>現在の始動状態</label><input type="text" id="p6" placeholder="例：キックにて始動確認済み"></div>
+</div>
+<div class="form-group" style="position: relative;"><label id="label-p7">車両の紹介（経緯など）</label><textarea id="p7" oninput="updateWordCount()"></textarea><div id="word-count" class="counter-label">0文字</div></div>
+<div class="form-group"><label>YouTube走行確認動画のURL（任意）</label><input type="text" id="p9" placeholder="例：https://youtube.com"></div>
+<div class="form-group"><label>● エンジン</label><input type="text" id="s1"></div>
+<div class="form-group"><label>● キック・圧縮</label><input type="text" id="s2"></div>
+<div class="form-group"><label>● 駆動系</label><input type="text" id="s3"></div>
+<div class="form-group"><label>● 外装・傷など</label><input type="text" id="s4"></div>
+<div class="form-group"><label>● その他・カスタム箇所</label><input type="text" id="s5"></div>
+<div class="form-group">
+<label>車両写真の追加</label>
+<div id="drop-zone" class="upload-drop-zone" onclick="document.getElementById('image-files').click()">
+<p style="margin:0;font-size:14px;color:#86868b;">ここに写真をドラッグ＆ドロップするか、クリックして選択してください</p>
+<input type="file" id="image-files" accept="image/*" multiple="" style="display:none;">
+</div>
+<div id="image-preview-container" class="preview-thumbnails"></div>
+</div>
+<button class="btn" onclick="makeHTML()">HTMLコードを生成する</button>
+</div>
+<div class="right-column" style="margin-top:40px;">
+<input type="hidden" id="out">
+<div class="box">
+<div class="section-title">プレビュー</div>
+<div id="preview-area" class="preview-box"></div>
+</div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
